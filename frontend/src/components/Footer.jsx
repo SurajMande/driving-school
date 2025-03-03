@@ -1,86 +1,111 @@
 import React from "react";
-import { FaFacebookF, FaInstagram, FaTwitter, FaLinkedinIn, FaYoutube } from "react-icons/fa";
+import { 
+  FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn, 
+  FaPhoneAlt, FaEnvelope, FaMapMarkerAlt 
+} from "react-icons/fa";
 
-// Footer Data JSON
 const footerData = {
   brand: {
-    name: "ShopWave",
-    tagline: "Empowering e-commerce growth, one dashboard at a time.",
-    socialIcons: [
-      { icon: <FaFacebookF />, link: "#" },
-      { icon: <FaInstagram />, link: "#" },
-      { icon: <FaTwitter />, link: "#" },
-      { icon: <FaLinkedinIn />, link: "#" },
-      { icon: <FaYoutube />, link: "#" },
-    ],
+    name: "DrivePro Academy",
+    tagline: "Master the road with expert driving lessons.",
   },
-  links: [
-    {
-      title: "Product",
-      items: ["Dashboard", "Features", "Pricing", "Support"],
-    },
-    {
-      title: "Resources",
-      items: ["Documentation", "FAQs", "Tutorial", "Case Studies"],
-    },
-    {
-      title: "Company",
-      items: ["About Us", "Careers", "Blog", "Contact Us"],
-    },
-    {
-      title: "Community",
-      items: ["Forum", "Events", "Ambassador Program", "Partner Network"],
-    },
+  quickLinks: ["Home", "About Us", "Courses", "Instructors", "Testimonials", "Contact"],
+  services: ["Beginner Driving", "Advanced Training", "Defensive Driving", "License Test Prep"],
+  contact: [
+    { icon: <FaPhoneAlt />, text: "+91 98765 43210" },
+    { icon: <FaEnvelope />, text: "info@drivepro.com" },
+    { icon: <FaMapMarkerAlt />, text: "123, Main Street, New Delhi, India" },
   ],
-  policies: ["Privacy Policy", "Terms of Service", "Cookies Settings"],
+  socialLinks: [
+    { icon: <FaFacebookF />, link: "#" },
+    { icon: <FaTwitter />, link: "#" },
+    { icon: <FaInstagram />, link: "#" },
+    { icon: <FaLinkedinIn />, link: "#" },
+  ],
 };
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-100 text-gray-800 py-12 px-6 md:px-12 lg:px-20">
-      <div className="max-w-6xl mx-auto">
-        {/* Top Section */}
-        <div className="flex flex-col md:flex-row md:justify-between items-center md:items-start">
-          {/* Brand & Socials */}
-          <div className="text-center md:text-left">
-            <h2 className="text-2xl font-bold text-gray-900">{footerData.brand.name}</h2>
-            <p className="text-gray-500 mt-2 max-w-sm">{footerData.brand.tagline}</p>
-            <div className="flex gap-3 justify-center md:justify-start mt-4">
-              {footerData.brand.socialIcons.map((item, index) => (
-                <a key={index} href={item.link} className="text-gray-600 hover:text-gray-900 text-xl">
-                  {item.icon}
-                </a>
-              ))}
-            </div>
-          </div>
+    <footer className="bg-gray-950 text-gray-300 py-20 px-6 md:px-12 lg:px-24">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
 
-          {/* Links */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-8 md:mt-0 text-center md:text-left">
-            {footerData.links.map((section, index) => (
-              <div key={index}>
-                <h4 className="font-semibold text-gray-900">{section.title}</h4>
-                <ul className="mt-3 space-y-2 text-gray-600">
-                  {section.items.map((item, i) => (
-                    <li key={i} className="hover:text-gray-900 cursor-pointer">
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+        {/* Brand Section */}
+        <div className="space-y-4">
+          <h2 className="text-white text-3xl font-bold">{footerData.brand.name}</h2>
+          <p className="text-gray-400 text-sm">{footerData.brand.tagline}</p>
+        </div>
+
+        {/* Quick Links */}
+        <div>
+          <h3 className="text-white text-lg font-semibold mb-4">Quick Links</h3>
+          <ul className="space-y-2">
+            {footerData.quickLinks.map((item, index) => (
+              <li key={index}>
+                <a href="#" className="hover:text-blue-400 transition duration-300">{item}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Services */}
+        <div>
+          <h3 className="text-white text-lg font-semibold mb-4">Our Services</h3>
+          <ul className="space-y-2">
+            {footerData.services.map((service, index) => (
+              <li key={index} className="text-gray-400 hover:text-blue-400 transition duration-300">{service}</li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Contact & Socials */}
+        <div>
+          <h3 className="text-white text-lg font-semibold mb-4">Contact Us</h3>
+          <ul className="space-y-3">
+            {footerData.contact.map((item, index) => (
+              <li key={index} className="flex items-center gap-3 text-gray-400">
+                <span className="text-xl text-blue-500">{item.icon}</span> {item.text}
+              </li>
+            ))}
+          </ul>
+
+          {/* Social Icons */}
+          <div className="flex gap-4 mt-6">
+            {footerData.socialLinks.map((social, index) => (
+              <a 
+                key={index} 
+                href={social.link} 
+                className="text-gray-400 hover:text-blue-400 transition duration-300 text-2xl"
+              >
+                {social.icon}
+              </a>
             ))}
           </div>
         </div>
+      </div>
 
-        {/* Bottom Section */}
-        <div className="mt-10 text-center text-gray-500 text-sm border-t pt-6">
-          <p>© 2024 {footerData.brand.name}. All rights reserved.</p>
-          <div className="flex justify-center gap-6 mt-3">
-            {footerData.policies.map((policy, index) => (
-              <p key={index} className="hover:text-gray-700 cursor-pointer">
-                {policy}
-              </p>
-            ))}
+      {/* Bottom Section */}
+      <div className="max-w-7xl mx-auto mt-12 border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+
+        {/* Newsletter */}
+        <div className="w-full md:w-1/2 text-center md:text-left">
+          <h3 className="text-white text-lg font-semibold">Stay Updated</h3>
+          <p className="text-gray-400 text-sm mt-2">Subscribe for driving tips & offers.</p>
+          <div className="flex items-center mt-4">
+            <input
+              type="email"
+              placeholder="Enter your email"
+              className="w-full py-3 px-4 rounded-l-md bg-gray-800 border border-gray-700 text-gray-300 
+              focus:outline-none focus:border-blue-500 transition duration-300"
+            />
+            <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-r-md transition duration-300">
+              Subscribe
+            </button>
           </div>
+        </div>
+
+        {/* Copyright */}
+        <div className="text-gray-500 text-sm text-center md:text-right mt-6 md:mt-0">
+          © {new Date().getFullYear()} DrivePro Academy. All rights reserved.
         </div>
       </div>
     </footer>

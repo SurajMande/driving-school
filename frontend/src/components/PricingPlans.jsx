@@ -1,9 +1,10 @@
 import React from "react";
+import { FaCheckCircle } from "react-icons/fa"; // Importing React Icons
 
 const plans = [
   {
     name: "Free",
-    price: "$0",
+    price: "₹0",
     description: "Get started with the essentials to manage your e-commerce operations efficiently.",
     buttonText: "Sign Up Now",
     buttonStyle: "bg-gray-200 text-gray-700 hover:bg-gray-300",
@@ -17,7 +18,7 @@ const plans = [
   },
   {
     name: "Pro",
-    price: "$49",
+    price: "₹4,099",
     description: "Unlock advanced tools and insights to scale your business and optimize workflows.",
     buttonText: "Get Started",
     buttonStyle: "bg-blue-600 text-white hover:bg-blue-700",
@@ -48,47 +49,46 @@ const plans = [
 
 const PricingPlans = () => {
   return (
-    <section className="py-16 px-6 md:px-12 lg:px-20 bg-white">
-      <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-          Flexible Plans for Every Need
-        </h2>
+    <section className="py-16 px-6 md:px-12 lg:px-20 bg-white text-center">
+      <div className="max-w-4xl mx-auto">
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Flexible Plans for Every Need</h2>
         <p className="text-gray-500 mt-3 text-lg max-w-2xl mx-auto">
-          Choose the plan that fits your needs. Whether starting small or scaling up,
-          our pricing supports individuals, teams, and organizations.
+          Choose the plan that fits your needs. Whether starting small or scaling up, our pricing supports individuals, teams, and organizations.
         </p>
       </div>
 
-      {/* Pricing Cards */}
       <div className="max-w-5xl mx-auto mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-        {plans.map((plan, index) => (
-          <div
+        {plans.map(({ name, price, description, buttonText, buttonStyle, features, highlight }, index) => (
+          <article
             key={index}
-            className={`relative border rounded-lg p-8 shadow-md bg-white transition-all duration-300 ${
-              plan.highlight ? "border-blue-500 shadow-lg scale-105" : "hover:shadow-lg"
+            className={`relative border rounded-lg p-8 shadow-md bg-white transition-all duration-300 hover:shadow-lg ${
+              highlight ? "border-blue-500 shadow-lg scale-105" : ""
             }`}
           >
-            {plan.highlight && (
+            {highlight && (
               <span className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-blue-600 text-white text-xs font-bold py-1 px-3 rounded-full">
                 Most Popular
               </span>
             )}
-            <h3 className="text-2xl font-semibold text-gray-900">{plan.name}</h3>
-            <p className="text-gray-500 mt-2">{plan.description}</p>
-            <div className="text-4xl font-bold mt-6">{plan.price} <span className="text-gray-500 text-sm">per month</span></div>
-            <button
-              className={`mt-6 w-full py-3 rounded-lg font-medium transition ${plan.buttonStyle}`}
-            >
-              {plan.buttonText}
+
+            <h3 className="text-2xl font-semibold text-gray-900">{name}</h3>
+            <p className="text-gray-500 mt-2">{description}</p>
+            <div className="text-4xl font-bold mt-6">
+              {price} <span className="text-gray-500 text-sm">per month</span>
+            </div>
+            
+            <button className={`mt-6 w-full py-3 rounded-lg font-medium transition ${buttonStyle}`}>
+              {buttonText}
             </button>
-            <ul className="mt-6 space-y-3 text-gray-600">
-              {plan.features.map((feature, i) => (
+
+            <ul className="mt-6 space-y-3 text-gray-600 text-left">
+              {features.map((feature, i) => (
                 <li key={i} className="flex items-center gap-2">
-                  ✅ {feature}
+                  <FaCheckCircle className="text-blue-500" /> {feature}
                 </li>
               ))}
             </ul>
-          </div>
+          </article>
         ))}
       </div>
     </section>

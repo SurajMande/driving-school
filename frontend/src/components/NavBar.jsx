@@ -4,9 +4,8 @@ import { FiMenu, FiX } from "react-icons/fi";
 
 const navbarData = [
   { name: "Home", path: "/" },
-  { name: "Features", path: "/features" },
-  { name: "Pricing", path: "/pricing" },
-  { name: "Blog", path: "/blog" },
+  { name: "Courses", path: "/courses" },
+  { name: "Licences", path: "/licences" },
   { name: "Contact", path: "/contact" },
 ];
 
@@ -14,11 +13,11 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-white shadow-lg fixed w-full z-50">
+    <nav className=" shadow-lg fixed w-full z-50 ">
       <div className="container mx-auto flex justify-between items-center py-4 px-6 lg:px-10">
         {/* Logo */}
         <Link to="/" className="text-2xl font-semibold flex items-center text-gray-900">
-          ShopWave
+          Motor Driving School
         </Link>
 
         {/* Desktop Links */}
@@ -38,10 +37,10 @@ const Navbar = () => {
         {/* Buttons with Link */}
         <div className="hidden md:flex space-x-5">
           <Link
-            to="/contact-sales"
+            to="/login"
             className="border border-gray-300 px-5 py-2 rounded-lg shadow-md font-medium text-gray-800 hover:bg-gray-100 transition-all duration-300"
           >
-            Contact Sales
+            Login
           </Link>
           <Link
             to="/signup"
@@ -81,11 +80,11 @@ const Navbar = () => {
           </ul>
           <div className="mt-auto">
             <Link
-              to="/contact-sales"
+              to="/login"
               className="w-full block text-center border border-gray-300 py-3 rounded-lg shadow-md mb-3 font-medium text-gray-800 hover:bg-gray-100 transition-all duration-300"
               onClick={() => setIsOpen(false)}
             >
-              Contact Sales
+              Login
             </Link>
             <Link
               to="/signup"
