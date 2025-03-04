@@ -6,6 +6,7 @@ import Footer from './components/Footer';
 import CoursesPage from './pages/Courses';
 import LoginPage from './components/Login';
 import LicenseList from './pages/Licenses';
+import Contact from './pages/Contact';
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <Route path="/courses" element={<CoursesPage/> } />
         <Route path="/login" element={<LoginPage/> } />
         <Route path="/licences" element={<LicenseList/> } />
+        <Route path="/contact" element={<Contact/> } />
       </Routes>
       <Footer />
     </>
